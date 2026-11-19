@@ -223,6 +223,31 @@ button, input, select, textarea {
     gap: 16px;
 }
 
+/* Home Nav Pill Button */
+.home-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    color: var(--slate-700);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-xs);
+}
+
+.home-nav-btn:hover {
+    background: var(--emerald-50);
+    color: var(--emerald-700);
+    border-color: var(--emerald-300);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
 /* Streak Pill */
 .streak-pill {
     display: inline-flex;

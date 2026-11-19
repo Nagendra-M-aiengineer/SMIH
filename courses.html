@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMIH | Eco Courses & Learn</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Modern Topbar -->
+    <header class="app-topbar">
+        <div class="topbar-left">
+            <button id="menuToggleBtn" class="icon-action-btn" aria-label="Toggle Navigation" title="Toggle Sidebar">☰</button>
+            <a href="dashboard.html" class="brand">
+                <div class="logo-icon">🌱</div>
+                <div class="brand-text">
+                    <span class="brand-title">SMIH</span>
+                    <span class="brand-subtitle">Smart Eco Hub</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="topbar-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search lessons, modules, topics... (⌘K)" id="globalSearchInput" onkeyup="handleGlobalSearch(event)">
+            <span class="kbd-hint">⌘K</span>
+        </div>
+
+        <div class="topbar-right">
+            <div id="topbarStreak" class="streak-pill">🔥 7 days</div>
+            <div class="role-badge-select">
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--slate-400); font-weight: 800;">Portal:</span>
+                <select id="topbarRoleSelect" onchange="switchRole(this.value)">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="institution">Institution</option>
+                </select>
+            </div>
+            <button class="icon-action-btn" title="Notifications" onclick="showToast('📚 New Module added: Urban Microgrid Engineering!')">
+                🔔
+                <span class="badge-dot"></span>
+            </button>
+            <div class="user-profile-badge" onclick="location.href='profile.html'">
+                <div class="user-avatar-mini" id="topbarAvatarLetter">N</div>
+                <span id="topbarUserName" style="font-size: 13.5px; font-weight: 700;">Nagendra</span>
+            </div>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay Backdrop -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-nav">
+                <div class="sidebar-category">Main Menu</div>
+                <a href="dashboard.html" class="nav-item" data-title="Dashboard">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="courses.html" class="nav-item active" data-title="Learn / Courses">
+                    <span class="icon">📚</span>
+                    <span>Learn / Courses</span>
+                </a>
+                <a href="quiz.html" class="nav-item" data-title="Play / Quiz">
+                    <span class="icon">🎮</span>
+                    <span>Play / Quiz</span>
+                </a>
+                <a href="missions.html" class="nav-item" data-title="Eco Missions">
+                    <span class="icon">🌱</span>
+                    <span>Eco Missions</span>
+                </a>
+                <a href="missions.html#challenges" class="nav-item" data-title="Challenges">
+                    <span class="icon">🏆</span>
+                    <span>Challenges</span>
+                </a>
+                <a href="leaderboard.html" class="nav-item" data-title="Leaderboard">
+                    <span class="icon">🥇</span>
+                    <span>Leaderboard</span>
+                </a>
+                <a href="profile.html#badges" class="nav-item" data-title="Badges">
+                    <span class="icon">🎖️</span>
+                    <span>Badges</span>
+                </a>
+                <a href="profile.html#passport" class="nav-item" data-title="Eco Passport">
+                    <span class="icon">🌍</span>
+                    <span>Eco Passport</span>
+                </a>
+                <a href="profile.html#aitutor" class="nav-item" data-title="AI Tutor">
+                    <span class="icon">🤖</span>
+                    <span>AI Tutor</span>
+                </a>
+                <a href="profile.html" class="nav-item" data-title="Profile">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <div class="eco-mini-meter">
+                    <small>Carbon Offset</small>
+                    <div class="carbon-val" id="sidebarCarbonVal">42.8 kg CO₂</div>
+                    <p>Equivalent to 4 planted urban saplings 🌳</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px;">
+                <div>
+                    <h1 style="font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px;">📚 Environmental Courses & Curriculum</h1>
+                    <p style="color: var(--slate-500); font-size: 14.5px;">Master atmospheric science, circular economics, biodiversity habitats, and clean energy systems.</p>
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All Modules</button>
+                <button class="filter-btn" data-filter="climate">🌡️ Climate Change</button>
+                <button class="filter-btn" data-filter="biodiversity">🌳 Biodiversity</button>
+                <button class="filter-btn" data-filter="waste">♻️ Waste & Circular Systems</button>
+                <button class="filter-btn" data-filter="energy">⚡ Renewable Energy</button>
+                <button class="filter-btn" data-filter="water">💧 Water Stewardship</button>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="courses-grid" id="coursesGrid"></div>
+        </main>
+    </div>
+
+    <!-- Global Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Lesson Reader Modal -->
+    <div id="lessonModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="lessonModalTitle">Course Modules</h3>
+                <button class="close-modal-btn" onclick="closeModal('lessonModal')">✕</button>
+            </div>
+            <div id="lessonModalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        requireLogin();
+    </script>
+</body>
+</html>

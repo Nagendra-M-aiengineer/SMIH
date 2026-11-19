@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | SMIH - Environmental Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+
+    <div class="auth-container">
+        <div class="auth-brand">
+            <div class="logo">
+                <div class="logo-icon">🌱</div>
+                <span>SMIH</span>
+            </div>
+            <p>Smart Environmental Learning Hub</p>
+        </div>
+
+        <div class="auth-card">
+            <h2>Welcome Back 👋</h2>
+            <p class="muted">Continue your environmental champion journey.</p>
+
+            <form id="loginForm">
+                <label for="loginEmail">Email Address</label>
+                <input type="email" id="loginEmail" placeholder="Enter your email" value="nagendra@smih.edu" required>
+
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter password" value="password123" required>
+
+                <button class="primary-btn full-btn" type="submit">
+                    Sign In to Portal →
+                </button>
+            </form>
+
+            <!-- 1-Click Demo Logins for Testing -->
+            <div class="demo-account-pills">
+                <small>Quick Demo Access (Click to Fill):</small>
+                <div class="demo-pills-row">
+                    <button type="button" class="demo-pill" onclick="fillDemo('nagendra@smih.edu', 'password123', 'student')">
+                        🧑‍🎓 Student (Nagendra)
+                    </button>
+                    <button type="button" class="demo-pill" onclick="fillDemo('sarah.green@smih.edu', 'teacher123', 'teacher')">
+                        👩‍🏫 Teacher (Dr. Sarah)
+                    </button>
+                    <button type="button" class="demo-pill" onclick="fillDemo('admin@campus.edu', 'admin123', 'institution')">
+                        🏛️ Institution (Dean)
+                    </button>
+                </div>
+            </div>
+
+            <div id="loginMessage"></div>
+
+            <p class="auth-footer">
+                Don't have an account?
+                <a href="register.html">Create One</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

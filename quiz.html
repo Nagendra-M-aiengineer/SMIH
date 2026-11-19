@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMIH | Play & Quiz Arena</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Modern Topbar -->
+    <header class="app-topbar">
+        <div class="topbar-left">
+            <button id="menuToggleBtn" class="icon-action-btn" aria-label="Toggle Navigation" title="Toggle Sidebar">☰</button>
+            <a href="dashboard.html" class="brand">
+                <div class="logo-icon">🌱</div>
+                <div class="brand-text">
+                    <span class="brand-title">SMIH</span>
+                    <span class="brand-subtitle">Smart Eco Hub</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="topbar-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search quiz questions, topics... (⌘K)" id="globalSearchInput" onkeyup="handleGlobalSearch(event)">
+            <span class="kbd-hint">⌘K</span>
+        </div>
+
+        <div class="topbar-right">
+            <div id="topbarStreak" class="streak-pill">🔥 7 days</div>
+            <div class="role-badge-select">
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--slate-400); font-weight: 800;">Portal:</span>
+                <select id="topbarRoleSelect" onchange="switchRole(this.value)">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="institution">Institution</option>
+                </select>
+            </div>
+            <button class="icon-action-btn" title="Notifications" onclick="showToast('🎯 New Quiz: Circular Plastics is ready for you!')">
+                🔔
+                <span class="badge-dot"></span>
+            </button>
+            <div class="user-profile-badge" onclick="location.href='profile.html'">
+                <div class="user-avatar-mini" id="topbarAvatarLetter">N</div>
+                <span id="topbarUserName" style="font-size: 13.5px; font-weight: 700;">Nagendra</span>
+            </div>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay Backdrop -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-nav">
+                <div class="sidebar-category">Main Menu</div>
+                <a href="dashboard.html" class="nav-item" data-title="Dashboard">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="courses.html" class="nav-item" data-title="Learn / Courses">
+                    <span class="icon">📚</span>
+                    <span>Learn / Courses</span>
+                </a>
+                <a href="quiz.html" class="nav-item active" data-title="Play / Quiz">
+                    <span class="icon">🎮</span>
+                    <span>Play / Quiz</span>
+                </a>
+                <a href="missions.html" class="nav-item" data-title="Eco Missions">
+                    <span class="icon">🌱</span>
+                    <span>Eco Missions</span>
+                </a>
+                <a href="missions.html#challenges" class="nav-item" data-title="Challenges">
+                    <span class="icon">🏆</span>
+                    <span>Challenges</span>
+                </a>
+                <a href="leaderboard.html" class="nav-item" data-title="Leaderboard">
+                    <span class="icon">🥇</span>
+                    <span>Leaderboard</span>
+                </a>
+                <a href="profile.html#badges" class="nav-item" data-title="Badges">
+                    <span class="icon">🎖️</span>
+                    <span>Badges</span>
+                </a>
+                <a href="profile.html#passport" class="nav-item" data-title="Eco Passport">
+                    <span class="icon">🌍</span>
+                    <span>Eco Passport</span>
+                </a>
+                <a href="profile.html#aitutor" class="nav-item" data-title="AI Tutor">
+                    <span class="icon">🤖</span>
+                    <span>AI Tutor</span>
+                </a>
+                <a href="profile.html" class="nav-item" data-title="Profile">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <div class="eco-mini-meter">
+                    <small>Carbon Offset</small>
+                    <div class="carbon-val" id="sidebarCarbonVal">42.8 kg CO₂</div>
+                    <p>Equivalent to 4 planted urban saplings 🌳</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;">
+                <div>
+                    <h1 style="font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px;">🎮 Eco Quiz & Knowledge Arena</h1>
+                    <p style="color: var(--slate-500); font-size: 14.5px;">Challenge your ecological problem-solving skills, earn XP, and unlock rare badges.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button class="filter-btn active" id="quizTab0" onclick="switchQuiz(0)">Quiz 1: Climate Action</button>
+                    <button class="filter-btn" id="quizTab1" onclick="switchQuiz(1)">Quiz 2: Circular Plastics</button>
+                </div>
+            </div>
+
+            <!-- Quiz Engine Area -->
+            <div class="quiz-container" id="quizEngineArea"></div>
+        </main>
+    </div>
+
+    <!-- Global Toast Container -->
+    <div id="toastContainer"></div>
+
+    <script src="app.js"></script>
+    <script>
+        requireLogin();
+        function switchQuiz(index) {
+            document.getElementById("quizTab0").classList.toggle("active", index === 0);
+            document.getElementById("quizTab1").classList.toggle("active", index === 1);
+            activeQuiz = QUIZZES_DATA[index];
+            currentQuestionIndex = 0;
+            userQuizAnswers = {};
+            renderQuizQuestion();
+            showToast(`Switched to: ${activeQuiz.title}`);
+        }
+    </script>
+</body>
+</html>

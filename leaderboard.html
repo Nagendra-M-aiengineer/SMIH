@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMIH | Campus Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Modern Topbar -->
+    <header class="app-topbar">
+        <div class="topbar-left">
+            <button id="menuToggleBtn" class="icon-action-btn" aria-label="Toggle Navigation" title="Toggle Sidebar">☰</button>
+            <a href="dashboard.html" class="brand">
+                <div class="logo-icon">🌱</div>
+                <div class="brand-text">
+                    <span class="brand-title">SMIH</span>
+                    <span class="brand-subtitle">Smart Eco Hub</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="topbar-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search student champions, departments... (⌘K)" id="globalSearchInput" onkeyup="handleGlobalSearch(event)">
+            <span class="kbd-hint">⌘K</span>
+        </div>
+
+        <div class="topbar-right">
+            <div id="topbarStreak" class="streak-pill">🔥 7 days</div>
+            <div class="role-badge-select">
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--slate-400); font-weight: 800;">Portal:</span>
+                <select id="topbarRoleSelect" onchange="switchRole(this.value)">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="institution">Institution</option>
+                </select>
+            </div>
+            <button class="icon-action-btn" title="Notifications" onclick="showToast('🥇 Nagendra M holds the #1 Campus Rank!')">
+                🔔
+                <span class="badge-dot"></span>
+            </button>
+            <div class="user-profile-badge" onclick="location.href='profile.html'">
+                <div class="user-avatar-mini" id="topbarAvatarLetter">N</div>
+                <span id="topbarUserName" style="font-size: 13.5px; font-weight: 700;">Nagendra</span>
+            </div>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay Backdrop -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-nav">
+                <div class="sidebar-category">Main Menu</div>
+                <a href="dashboard.html" class="nav-item" data-title="Dashboard">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="courses.html" class="nav-item" data-title="Learn / Courses">
+                    <span class="icon">📚</span>
+                    <span>Learn / Courses</span>
+                </a>
+                <a href="quiz.html" class="nav-item" data-title="Play / Quiz">
+                    <span class="icon">🎮</span>
+                    <span>Play / Quiz</span>
+                </a>
+                <a href="missions.html" class="nav-item" data-title="Eco Missions">
+                    <span class="icon">🌱</span>
+                    <span>Eco Missions</span>
+                </a>
+                <a href="missions.html#challenges" class="nav-item" data-title="Challenges">
+                    <span class="icon">🏆</span>
+                    <span>Challenges</span>
+                </a>
+                <a href="leaderboard.html" class="nav-item active" data-title="Leaderboard">
+                    <span class="icon">🥇</span>
+                    <span>Leaderboard</span>
+                </a>
+                <a href="profile.html#badges" class="nav-item" data-title="Badges">
+                    <span class="icon">🎖️</span>
+                    <span>Badges</span>
+                </a>
+                <a href="profile.html#passport" class="nav-item" data-title="Eco Passport">
+                    <span class="icon">🌍</span>
+                    <span>Eco Passport</span>
+                </a>
+                <a href="profile.html#aitutor" class="nav-item" data-title="AI Tutor">
+                    <span class="icon">🤖</span>
+                    <span>AI Tutor</span>
+                </a>
+                <a href="profile.html" class="nav-item" data-title="Profile">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <div class="eco-mini-meter">
+                    <small>Carbon Offset</small>
+                    <div class="carbon-val" id="sidebarCarbonVal">42.8 kg CO₂</div>
+                    <p>Equivalent to 4 planted urban saplings 🌳</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;">
+                <div>
+                    <h1 style="font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px;">🏆 Campus Eco Leaderboard</h1>
+                    <p style="color: var(--slate-500); font-size: 14.5px;">Recognizing top student champions and department sustainability impact.</p>
+                </div>
+                <div class="filter-bar" style="margin-bottom: 0;">
+                    <button class="filter-btn active" id="tabStudents">🧑‍🎓 Student Champions</button>
+                    <button class="filter-btn" id="tabDepts">🏢 Department League</button>
+                </div>
+            </div>
+
+            <!-- Top 3 Podium Section -->
+            <div class="podium-section">
+                <!-- 2nd Place -->
+                <div class="podium-place">
+                    <div style="font-size: 20px; margin-bottom: 6px;">🥈 2nd</div>
+                    <div class="podium-avatar">👩‍🎓</div>
+                    <strong style="font-size: 15px; display: block; color: var(--slate-900);">Ananya Sharma</strong>
+                    <span style="font-size: 12px; color: var(--slate-500); font-weight: 600;">CSE Dept</span>
+                    <div style="font-size: 16px; font-weight: 800; color: #16a34a; margin-top: 6px;">2,380 XP</div>
+                </div>
+
+                <!-- 1st Place -->
+                <div class="podium-place first">
+                    <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #eab308; color: white; padding: 3px 12px; border-radius: var(--radius-full); font-size: 11px; font-weight: 800; letter-spacing: 0.05em;">
+                        CAMPUS #1
+                    </div>
+                    <div style="font-size: 24px; margin-bottom: 6px;">🥇 1st</div>
+                    <div class="podium-avatar" style="border-color: #facc15;">🧑‍🎓</div>
+                    <strong style="font-size: 16px; display: block; color: var(--slate-900);">Nagendra M (You)</strong>
+                    <span style="font-size: 12.5px; color: #15803d; font-weight: 700;">AI & DS Dept</span>
+                    <div style="font-size: 20px; font-weight: 800; color: #15803d; margin-top: 6px;">2,450 XP</div>
+                </div>
+
+                <!-- 3rd Place -->
+                <div class="podium-place">
+                    <div style="font-size: 20px; margin-bottom: 6px;">🥉 3rd</div>
+                    <div class="podium-avatar">👨‍🎓</div>
+                    <strong style="font-size: 15px; display: block; color: var(--slate-900);">Rohan Patel</strong>
+                    <span style="font-size: 12px; color: var(--slate-500); font-weight: 600;">AI & DS Dept</span>
+                    <div style="font-size: 16px; font-weight: 800; color: #16a34a; margin-top: 6px;">2,210 XP</div>
+                </div>
+            </div>
+
+            <!-- Rankings Table -->
+            <div class="data-table-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr id="leaderboardHeaderRow">
+                            <th>Rank</th>
+                            <th>Eco Champion</th>
+                            <th>Department</th>
+                            <th>Level & XP</th>
+                            <th>Streak</th>
+                            <th>CO₂ Offset</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardTableBody"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Global Toast Container -->
+    <div id="toastContainer"></div>
+
+    <script src="app.js"></script>
+    <script>
+        requireLogin();
+    </script>
+</body>
+</html>

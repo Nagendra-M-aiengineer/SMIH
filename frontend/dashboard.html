@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMIH | Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Modern Glass Topbar -->
+    <header class="app-topbar">
+        <div class="topbar-left">
+            <button id="menuToggleBtn" class="icon-action-btn" aria-label="Toggle Navigation" title="Toggle Sidebar">☰</button>
+            <a href="dashboard.html" class="brand">
+                <div class="logo-icon">🌱</div>
+                <div class="brand-text">
+                    <span class="brand-title">SMIH</span>
+                    <span class="brand-subtitle">Smart Eco Hub</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Global Search Bar with keyboard shortcut -->
+        <div class="topbar-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search lessons, missions, badges... (⌘K)" id="globalSearchInput" onkeyup="handleGlobalSearch(event)">
+            <span class="kbd-hint">⌘K</span>
+        </div>
+
+        <div class="topbar-right">
+            <!-- Streak pill with Fire Glow -->
+            <div id="topbarStreak" class="streak-pill" title="7 consecutive active days!">
+                🔥 7 days
+            </div>
+
+            <!-- Role Selector Badge -->
+            <div class="role-badge-select">
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--slate-400); font-weight: 800;">Portal:</span>
+                <select id="topbarRoleSelect" onchange="switchRole(this.value)">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="institution">Institution</option>
+                </select>
+            </div>
+
+            <!-- Notification Bell -->
+            <button class="icon-action-btn" title="Notifications" onclick="showToast('🔔 Campus Alert: The Great Plastic Sprint is 78% completed!')">
+                🔔
+                <span class="badge-dot"></span>
+            </button>
+
+            <!-- User profile badge with avatar -->
+            <div class="user-profile-badge" onclick="location.href='profile.html'" title="View Eco Passport & Profile">
+                <div class="user-avatar-mini" id="topbarAvatarLetter">N</div>
+                <span id="topbarUserName" style="font-size: 13.5px; font-weight: 700;">Nagendra</span>
+            </div>
+
+            <button onclick="logout()" class="logout-btn" title="Sign out">
+                Logout
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay Backdrop -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- App Layout: Left Sidebar + Main Content -->
+    <div class="app-layout">
+        
+        <!-- Left Sidebar Navigation matching wireframe -->
+        <aside class="sidebar">
+            <div class="sidebar-nav">
+                <div class="sidebar-category">Main Menu</div>
+                
+                <a href="dashboard.html" class="nav-item active" data-title="Dashboard">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="courses.html" class="nav-item" data-title="Learn / Courses">
+                    <span class="icon">📚</span>
+                    <span>Learn / Courses</span>
+                </a>
+
+                <a href="quiz.html" class="nav-item" data-title="Play / Quiz">
+                    <span class="icon">🎮</span>
+                    <span>Play / Quiz</span>
+                </a>
+
+                <a href="missions.html" class="nav-item" data-title="Eco Missions">
+                    <span class="icon">🌱</span>
+                    <span>Eco Missions</span>
+                </a>
+
+                <a href="missions.html#challenges" class="nav-item" data-title="Challenges">
+                    <span class="icon">🏆</span>
+                    <span>Challenges</span>
+                </a>
+
+                <a href="leaderboard.html" class="nav-item" data-title="Leaderboard">
+                    <span class="icon">🥇</span>
+                    <span>Leaderboard</span>
+                </a>
+
+                <a href="profile.html#badges" class="nav-item" data-title="Badges">
+                    <span class="icon">🎖️</span>
+                    <span>Badges</span>
+                </a>
+
+                <a href="profile.html#passport" class="nav-item" data-title="Eco Passport">
+                    <span class="icon">🌍</span>
+                    <span>Eco Passport</span>
+                </a>
+
+                <a href="profile.html#aitutor" class="nav-item" data-title="AI Tutor">
+                    <span class="icon">🤖</span>
+                    <span>AI Tutor</span>
+                </a>
+
+                <a href="profile.html" class="nav-item" data-title="Profile">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+            </div>
+
+            <!-- Sidebar Footer with Sustainability Mini Meter -->
+            <div class="sidebar-footer">
+                <div class="eco-mini-meter">
+                    <small>Carbon Offset</small>
+                    <div class="carbon-val" id="sidebarCarbonVal">42.8 kg CO₂</div>
+                    <p>Equivalent to 4 planted urban saplings 🌳</p>
+                </div>
+                <div style="font-size: 11px; text-align: center; color: var(--slate-400);">
+                    SMIH v2.4 • Net-Zero Campus
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Container -->
+        <main class="main-content" id="dashboardMain">
+            <!-- Dynamic Role Rendered by app.js -->
+        </main>
+
+    </div>
+
+    <!-- Global Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Mission Proof Verification Modal -->
+    <div id="missionProofModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="proofModalTitle">🎯 Verify Mission Action</h3>
+                <button class="close-modal-btn" onclick="closeModal('missionProofModal')">✕</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <p style="font-size: 13.5px; color: var(--slate-600);">
+                    Confirm your sustainable action. You can log notes or paste proof to certify your green habit into your official Eco Passport.
+                </p>
+                <div>
+                    <label style="font-size: 12.5px; font-weight: 700; display: block; margin-bottom: 6px;">Action Notes / Impact Log</label>
+                    <textarea id="missionProofNotes" rows="3" placeholder="e.g. Refused single-use plastic cups at the canteen; carried my reusable thermos bottle." style="width: 100%; padding: 12px; border: 1.5px solid var(--border-subtle); border-radius: 8px; font-family: inherit; font-size: 13.5px; outline: none;"></textarea>
+                </div>
+                <div style="background: var(--slate-50); border: 1px dashed var(--border-strong); border-radius: 8px; padding: 20px; text-align: center;">
+                    <div style="font-size: 24px; margin-bottom: 4px;">📸</div>
+                    <span style="font-size: 12.5px; font-weight: 600; color: var(--slate-600);">Simulated AI Campus Vision Audit</span>
+                    <div style="font-size: 11px; color: var(--slate-400); margin-top: 2px;">Image recognition active: verified reusable container</div>
+                </div>
+                <button class="primary-btn full-btn" onclick="confirmMissionCompletion()">
+                    ✓ Certify Action & Collect +100 XP
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher Quiz Builder Modal -->
+    <div id="quizBuilderModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📝 Create New Eco Quiz (Teacher)</h3>
+                <button class="close-modal-btn" onclick="closeModal('quizBuilderModal')">✕</button>
+            </div>
+            <form onsubmit="handleCreateQuizSubmit(event)">
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                    <div>
+                        <label style="font-size: 13px; font-weight: 700;">Quiz Title</label>
+                        <input type="text" id="newQuizTitle" placeholder="e.g. Microplastics & Ocean Health" required style="width: 100%; padding: 11px; border: 1px solid var(--border-subtle); border-radius: 8px;">
+                    </div>
+                    <div>
+                        <label style="font-size: 13px; font-weight: 700;">Subject Category</label>
+                        <select id="newQuizCategory" style="width: 100%; padding: 11px; border: 1px solid var(--border-subtle); border-radius: 8px;">
+                            <option value="Climate Action">Climate Action</option>
+                            <option value="Waste Management">Waste Management</option>
+                            <option value="Renewable Energy">Renewable Energy</option>
+                            <option value="Water Stewardship">Water Stewardship</option>
+                            <option value="Biodiversity">Biodiversity</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 13px; font-weight: 700;">XP Reward</label>
+                        <input type="number" id="newQuizXP" value="150" required style="width: 100%; padding: 11px; border: 1px solid var(--border-subtle); border-radius: 8px;">
+                    </div>
+                    <div>
+                        <label style="font-size: 13px; font-weight: 700;">Sample Question Text</label>
+                        <textarea placeholder="Enter question..." rows="3" style="width: 100%; padding: 11px; border: 1px solid var(--border-subtle); border-radius: 8px; font-family: inherit; font-size: 13.5px;"></textarea>
+                    </div>
+                    <button type="submit" class="primary-btn full-btn">
+                        Publish Quiz to Students →
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        requireLogin();
+    </script>
+</body>
+</html>

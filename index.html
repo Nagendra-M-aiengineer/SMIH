@@ -4,224 +4,446 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMIH | Smart Environmental Learning Hub</title>
+    <meta name="description" content="Gamified environmental education platform transforming students into certified sustainability champions through AI guidance, campus missions, and verified Eco Passports.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="landing-body">
 
-    <!-- Landing Navigation -->
-    <nav class="navbar">
-        <div class="logo">
-            <div class="logo-icon">🌱</div>
-            <span>SMIH</span>
-        </div>
+    <!-- Glassmorphic Sticky Header -->
+    <header class="landing-navbar">
+        <div class="landing-nav-container">
+            <a href="index.html" class="landing-brand">
+                <div class="landing-brand-icon">🌱</div>
+                <div>
+                    <span class="landing-brand-title">SMIH</span>
+                    <span class="landing-brand-tag">Smart Eco Hub</span>
+                </div>
+            </a>
 
-        <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#courses">Courses</a>
-            <a href="#portals">Portals</a>
-            <a href="dashboard.html">Live Dashboard</a>
-        </div>
+            <nav class="landing-nav-links">
+                <a href="#features" class="active-link">Features</a>
+                <a href="#curriculum">Curriculum</a>
+                <a href="#portals">Portals</a>
+                <a href="#impact">Campus Impact</a>
+            </nav>
 
-        <div class="nav-actions">
-            <a href="login.html" class="secondary-btn">Login</a>
-            <a href="register.html" class="primary-btn">Get Started →</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="badge-tag badge-green" style="font-size: 13px; font-weight: 700; margin-bottom: 20px;">
-                🌍 Learn • Play • Act • Protect
-            </div>
-
-            <h1 style="font-size: clamp(42px, 5.5vw, 68px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800; margin-bottom: 20px;">
-                Make Learning <span style="color: var(--green);">Green & Fun.</span>
-            </h1>
-
-            <p style="font-size: 17px; color: var(--text); line-height: 1.6; margin-bottom: 30px; max-width: 620px;">
-                SMIH is a gamified environmental education hub that transforms students into environmental champions through interactive curriculum, daily eco missions, campus leagues, and AI guidance.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="register.html" class="primary-btn large">
-                    Start Your Eco Journey →
+            <div class="landing-nav-actions">
+                <a href="dashboard.html" class="nav-demo-btn" title="Open live interactive student dashboard">
+                    <span class="pulse-dot"></span>
+                    <span>Live App</span>
                 </a>
-                <a href="dashboard.html" class="secondary-btn large">
-                    Explore Live Dashboard
+                <a href="login.html" class="nav-login-btn">Sign In</a>
+                <a href="register.html" class="nav-cta-btn">
+                    <span>Get Started</span>
+                    <span>→</span>
                 </a>
             </div>
+        </div>
+    </header>
 
-            <div class="stats" style="margin-top: 40px;">
-                <div>
-                    <strong style="font-size: 26px; color: #15803d;">100+</strong>
-                    <span style="font-size: 12px; color: var(--text-muted);">Eco Lessons</span>
+    <!-- Main Hero Section -->
+    <section class="landing-hero">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+
+        <div class="hero-grid">
+            <!-- Left Hero Content -->
+            <div class="hero-content">
+                <div class="hero-shimmer-pill">
+                    <span>✨</span>
+                    <span>AI-Powered Environmental Learning • SDGs 12 & 13</span>
                 </div>
-                <div>
-                    <strong style="font-size: 26px; color: #15803d;">50+</strong>
-                    <span style="font-size: 12px; color: var(--text-muted);">Eco Missions</span>
+
+                <h1 class="hero-title">
+                    Empower Campus Champions.<br>
+                    Make Sustainability <span class="gradient-text-green">Actionable & Fun.</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    SMIH transforms environmental education into everyday campus habits through gamified curriculum, real-world eco missions, department leagues, and an AI environmental tutor.
+                </p>
+
+                <!-- Primary Action Buttons -->
+                <div class="hero-actions-row">
+                    <a href="dashboard.html" class="hero-btn-primary">
+                        <span>Launch Student Portal</span>
+                        <span>→</span>
+                    </a>
+                    <a href="courses.html" class="hero-btn-secondary">
+                        <span>Explore Courses 📚</span>
+                    </a>
                 </div>
-                <div>
-                    <strong style="font-size: 26px; color: #15803d;">25+</strong>
-                    <span style="font-size: 12px; color: var(--text-muted);">Campus Challenges</span>
+
+                <!-- Fast Portal Jump Chips -->
+                <div class="hero-portal-pills">
+                    <span class="label">Dedicated Portals:</span>
+                    <a href="dashboard.html" class="portal-chip">🧑‍🎓 Student Hub</a>
+                    <a href="login.html" class="portal-chip">👩‍🏫 Faculty Studio</a>
+                    <a href="login.html" class="portal-chip">🏛️ Campus Admin</a>
                 </div>
-                <div>
-                    <strong style="font-size: 26px; color: #15803d;">∞</strong>
-                    <span style="font-size: 12px; color: var(--text-muted);">Real-World Impact</span>
+
+                <!-- 4-Stat Metric Strip -->
+                <div class="hero-stats-strip">
+                    <div class="hero-stat-card">
+                        <div class="hero-stat-num">100+</div>
+                        <div class="hero-stat-label">Eco Lessons</div>
+                    </div>
+                    <div class="hero-stat-card">
+                        <div class="hero-stat-num">50+</div>
+                        <div class="hero-stat-label">Action Missions</div>
+                    </div>
+                    <div class="hero-stat-card">
+                        <div class="hero-stat-num">42.8kg</div>
+                        <div class="hero-stat-label">CO₂ Offset Certified</div>
+                    </div>
+                    <div class="hero-stat-card">
+                        <div class="hero-stat-num">88/100</div>
+                        <div class="hero-stat-label">Campus Eco Score</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Dashboard Preview Card matching ASCII mock -->
-        <div class="hero-card">
-            <div class="dashboard-preview" style="background: white; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 26px; box-shadow: var(--shadow-xl); max-width: 420px; width: 100%;">
-                <div class="preview-header">
-                    <span style="font-weight: 800; color: #15803d;">🌱 SMIH Explorer</span>
-                    <span class="streak-pill" style="padding: 3px 10px; font-size: 11px;">🔥 7 day streak</span>
-                </div>
+            <!-- Right Hero Live Showcase Card -->
+            <div class="hero-showcase-wrapper">
+                <div class="hero-interactive-card">
+                    <div class="card-ambient-sheen"></div>
 
-                <h3 style="font-size: 18px; font-weight: 800; margin: 16px 0 12px;">Good afternoon, Nagendra! 🌍</h3>
-
-                <div class="level-box">
-                    <div>
-                        <small>Current Level</small>
-                        <h2>Level 12</h2>
+                    <!-- Card Header -->
+                    <div class="showcase-header">
+                        <div class="showcase-user-pill">
+                            <div class="showcase-avatar">N</div>
+                            <div>
+                                <strong style="font-size: 14.5px; display: block; color: var(--slate-900);">Nagendra M</strong>
+                                <span style="font-size: 11.5px; color: var(--slate-500); font-weight: 600;">AI & Data Science Dept</span>
+                            </div>
+                        </div>
+                        <div class="showcase-streak-pill">
+                            🔥 7 day streak
+                        </div>
                     </div>
-                    <div>
-                        <small>Eco XP</small>
-                        <h2>2,450</h2>
-                    </div>
-                </div>
 
-                <div class="progress" style="margin-bottom: 8px;">
-                    <div class="progress-bar" style="width: 78%;"></div>
-                </div>
-                <p class="small-text" style="margin-bottom: 18px;">78% towards Level 13</p>
+                    <!-- Greeting & Status -->
+                    <h3 class="showcase-greeting">Good afternoon, Nagendra! 🌍</h3>
 
-                <div class="mission-preview" style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 14px; display: flex; gap: 12px; align-items: center;">
-                    <div style="font-size: 24px;">🎯</div>
-                    <div>
-                        <div style="font-size: 11px; font-weight: 700; color: #166534; text-transform: uppercase;">Today's Eco Mission</div>
-                        <h4 style="font-size: 14px; font-weight: 700;">Reduce one single-use plastic item</h4>
-                        <span style="font-size: 12px; color: #15803d; font-weight: 700;">+100 XP</span>
+                    <!-- XP & Level Grid -->
+                    <div class="showcase-xp-box">
+                        <div>
+                            <div class="showcase-xp-sub">Rank Tier</div>
+                            <div class="showcase-xp-val" style="color: var(--emerald-600);">Level 12</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="showcase-xp-sub">Earned XP</div>
+                            <div class="showcase-xp-val">2,450 <span style="font-size: 13px; color: var(--slate-400);">XP</span></div>
+                        </div>
                     </div>
-                </div>
 
-                <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);">
-                    <small style="font-weight: 700; color: var(--text-muted); text-transform: uppercase; font-size: 11px;">Campus Leaderboard Standings</small>
-                    <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-top: 4px;">
-                        <span>1. AI & DS (Nagendra's Dept)</span>
-                        <strong style="color: #15803d;">18,450 XP</strong>
+                    <!-- Progress Bar -->
+                    <div class="showcase-progress-wrap">
+                        <div class="showcase-progress-bar">
+                            <div class="showcase-progress-fill"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--slate-500);">
+                            <span>78% towards Level 13</span>
+                            <span>+550 XP to Next Rank</span>
+                        </div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-top: 4px;">
-                        <span>2. CSE Department</span>
-                        <strong style="color: var(--text);">17,820 XP</strong>
+
+                    <!-- Active Mission Card -->
+                    <div class="showcase-mission-box">
+                        <div class="showcase-mission-icon">🎯</div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 11px; font-weight: 800; color: #166534; text-transform: uppercase; letter-spacing: 0.05em;">Today's Eco Mission</div>
+                            <h4 style="font-size: 14px; font-weight: 800; color: var(--slate-900); margin: 2px 0;">Reduce single-use plastic item</h4>
+                            <span style="font-size: 12px; color: var(--emerald-600); font-weight: 800;">+100 XP • Habit Verified</span>
+                        </div>
+                        <a href="missions.html" class="primary-btn" style="padding: 6px 12px; font-size: 12px; text-decoration: none;">Verify Proof</a>
+                    </div>
+
+                    <!-- Leaderboard Standings Widget -->
+                    <div class="showcase-leaderboard-box">
+                        <div style="font-size: 11px; font-weight: 800; color: var(--slate-400); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">Campus Leaderboard Standings</div>
+                        <div class="showcase-rank-row">
+                            <span>🥇 1. AI & DS (Nagendra's Dept)</span>
+                            <strong style="color: var(--emerald-600);">18,450 XP</strong>
+                        </div>
+                        <div class="showcase-rank-row">
+                            <span>🥈 2. Computer Science & Engg</span>
+                            <span style="color: var(--slate-700); font-weight: 700;">17,820 XP</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge Accent -->
+                    <div class="floating-badge-accent">
+                        <span>🎖️</span>
+                        <span>Verified Eco Champion</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why SMIH / Features -->
-    <section id="features" style="padding: 80px 7%; background: white;">
-        <div style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
-            <span class="badge-tag badge-green">WHY SMIH?</span>
-            <h2 style="font-size: 32px; font-weight: 800; margin: 10px 0;">Environmental Education, Reimagined.</h2>
-            <p style="color: var(--text-muted); font-size: 16px;">Transform abstract environmental concepts into tangible campus habits, team competitions, and verified carbon savings.</p>
+    <!-- Bento Features Grid Section -->
+    <section id="features" class="landing-section">
+        <div class="section-head-center">
+            <span class="section-pill-tag badge-green">CORE ARCHITECTURE</span>
+            <h2 class="section-title">Built for Real Planetary Impact</h2>
+            <p class="section-desc">Traditional environmental courses are passive. SMIH bridges classroom theory with observable daily campus habits and measurable emissions reductions.</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
-            <div class="stat-metric-card" style="flex-direction: column; align-items: flex-start; padding: 28px;">
-                <div class="stat-metric-icon xp" style="font-size: 28px; margin-bottom: 12px;">🎮</div>
-                <h3 style="font-size: 18px; margin-bottom: 6px;">Gamified XP & Levels</h3>
-                <p style="font-size: 13px; color: var(--text-muted);">Earn points, advance levels, maintain daily green streaks, and unlock prestigious eco badges.</p>
+        <div class="bento-grid">
+            <!-- Bento 1 (Large) -->
+            <div class="bento-card span-2">
+                <div>
+                    <div class="bento-icon-box bento-icon-green">🎮</div>
+                    <h3>Gamified Progression & Daily Habits</h3>
+                    <p>Level up from Eco Novice to Campus Vanguard. Earn XP for every course module, maintain daily streaks, and unlock prestigious badges that recognize verifiable behavioral change.</p>
+                </div>
+                <div style="background: var(--slate-50); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 18px; display: flex; gap: 16px; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <span style="font-size: 28px;">🔥</span>
+                        <div>
+                            <strong style="font-size: 14px; display: block;">Streak Multiplier</strong>
+                            <span style="font-size: 12px; color: var(--slate-500);">1.5x XP bonus for 7-day consistency</span>
+                        </div>
+                    </div>
+                    <a href="dashboard.html" class="secondary-btn" style="padding: 6px 14px; font-size: 12.5px; text-decoration: none;">View Progression</a>
+                </div>
             </div>
 
-            <div class="stat-metric-card" style="flex-direction: column; align-items: flex-start; padding: 28px;">
-                <div class="stat-metric-icon carbon" style="font-size: 28px; margin-bottom: 12px;">🌱</div>
-                <h3 style="font-size: 18px; margin-bottom: 6px;">Real-World Eco Missions</h3>
-                <p style="font-size: 13px; color: var(--text-muted);">Complete verifiable habits: avoiding single-use plastics, planting trees, and eliminating vampire power.</p>
+            <!-- Bento 2 -->
+            <div class="bento-card">
+                <div>
+                    <div class="bento-icon-box bento-icon-blue">🤖</div>
+                    <h3>AI Environmental Tutor</h3>
+                    <p>Get instant answers on carbon footprint calculations, renewable energy economics, and sustainable materials using our specialized RAG assistant.</p>
+                </div>
+                <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px; padding: 12px; font-size: 12.5px; color: #0369a1;">
+                    <strong>Prompt:</strong> "How much CO₂ does an LED bulb save?"
+                    <div style="font-weight: 700; color: #0284c7; margin-top: 4px;">→ 80% reduction vs incandescents</div>
+                </div>
             </div>
 
-            <div class="stat-metric-card" style="flex-direction: column; align-items: flex-start; padding: 28px;">
-                <div class="stat-metric-icon badges" style="font-size: 28px; margin-bottom: 12px;">🤖</div>
-                <h3 style="font-size: 18px; margin-bottom: 6px;">AI Environmental Tutor</h3>
-                <p style="font-size: 13px; color: var(--text-muted);">Instant RAG-augmented answers on carbon footprints, renewable energy, and sustainable design.</p>
+            <!-- Bento 3 -->
+            <div class="bento-card">
+                <div>
+                    <div class="bento-icon-box bento-icon-purple">🌍</div>
+                    <h3>Official Eco Passport</h3>
+                    <p>A tamper-proof digital record certifying real-world carbon offsets, completed faculty missions, and certified sustainability micro-credentials.</p>
+                </div>
+                <a href="profile.html#passport" class="portal-chip" style="align-self: flex-start;">Open Eco Passport →</a>
             </div>
 
-            <div class="stat-metric-card" style="flex-direction: column; align-items: flex-start; padding: 28px;">
-                <div class="stat-metric-icon streak" style="font-size: 28px; margin-bottom: 12px;">🌍</div>
-                <h3 style="font-size: 18px; margin-bottom: 6px;">Official Eco Passport</h3>
-                <p style="font-size: 13px; color: var(--text-muted);">Verified digital passport certifying real carbon offsets and sustainability micro-credentials.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3 Core Portals Overview -->
-    <section id="portals" style="padding: 80px 7%; background: var(--bg);">
-        <div style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
-            <span class="badge-tag badge-blue">TAILORED EXPERIENCES</span>
-            <h2 style="font-size: 32px; font-weight: 800; margin: 10px 0;">Three Dedicated Portals</h2>
-            <p style="color: var(--text-muted); font-size: 16px;">Built for students, educators, and campus leaders to work together towards net-zero goals.</p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
-            <!-- Student Portal -->
-            <div class="content-card" style="border-top: 4px solid var(--green);">
-                <div style="font-size: 32px; margin-bottom: 10px;">🧑‍🎓</div>
-                <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Student Portal</h3>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">Interactive learning, courses, daily missions, campus sprint challenges, badges, and AI tutoring.</p>
-                <ul style="font-size: 13px; color: var(--text); padding-left: 18px; margin-bottom: 20px; line-height: 1.8;">
-                    <li>Level & XP progression</li>
-                    <li>Eco Passport digital credentials</li>
-                    <li>Inter-department leaderboard</li>
-                </ul>
-                <a href="login.html" class="primary-btn full-btn">Explore as Student →</a>
-            </div>
-
-            <!-- Teacher Portal -->
-            <div class="content-card" style="border-top: 4px solid var(--blue);">
-                <div style="font-size: 32px; margin-bottom: 10px;">👩‍🏫</div>
-                <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Teacher Portal</h3>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">Manage classes, track student eco scores, build customized quizzes, and verify student mission proofs.</p>
-                <ul style="font-size: 13px; color: var(--text); padding-left: 18px; margin-bottom: 20px; line-height: 1.8;">
-                    <li>Custom Quiz Builder engine</li>
-                    <li>Mission verification queues</li>
-                    <li>Student progress analytics</li>
-                </ul>
-                <a href="login.html" class="outline-btn full-btn">Explore as Teacher →</a>
-            </div>
-
-            <!-- Institution Portal -->
-            <div class="content-card" style="border-top: 4px solid var(--purple);">
-                <div style="font-size: 32px; margin-bottom: 10px;">🏛️</div>
-                <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Institution Portal</h3>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">Campus-wide sustainability metrics, ESG compliance reporting, department leagues, and green audits.</p>
-                <ul style="font-size: 13px; color: var(--text); padding-left: 18px; margin-bottom: 20px; line-height: 1.8;">
-                    <li>Campus Eco Score (88/100)</li>
-                    <li>Solar & water recycling stats</li>
-                    <li>Exportable ESG / Green audit reports</li>
-                </ul>
-                <a href="login.html" class="outline-btn full-btn">Explore as Institution →</a>
+            <!-- Bento 4 (Large) -->
+            <div class="bento-card span-2">
+                <div>
+                    <div class="bento-icon-box bento-icon-amber">🏆</div>
+                    <h3>Inter-Department Leagues & Challenges</h3>
+                    <p>Transform sustainability into a spirited campus sport. Compete in 14-day energy reduction sprints, zero-waste canteen initiatives, and tree plantation drives.</p>
+                </div>
+                <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+                    <span class="badge-tag badge-green">🌱 The Great Plastic Sprint (78% Complete)</span>
+                    <span class="badge-tag badge-blue">⚡ Campus Vampire Power Audit</span>
+                    <a href="leaderboard.html" style="font-size: 13px; font-weight: 700; color: var(--emerald-600); text-decoration: none; margin-left: auto;">View Standings →</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer style="padding: 40px 7%; background: white; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 20px;">
-        <div class="logo">
-            <div class="logo-icon">🌱</div>
-            <span>SMIH</span>
+    <!-- 3 Portals Section -->
+    <section id="portals" class="portals-section-bg">
+        <div class="landing-section">
+            <div class="section-head-center">
+                <span class="section-pill-tag badge-blue">MULTI-ROLE ECOSYSTEM</span>
+                <h2 class="section-title">Three Tailored Portals</h2>
+                <p class="section-desc">Unified platform connecting students taking daily climate action, teachers building custom curricula, and campus administrators driving net-zero ESG goals.</p>
+            </div>
+
+            <div class="portals-grid-3">
+                <!-- Student Portal -->
+                <div class="portal-premium-card student-card">
+                    <div>
+                        <span class="portal-card-badge badge-green">Learner Hub</span>
+                        <div class="portal-icon-large">🧑‍🎓</div>
+                        <h3>Student Portal</h3>
+                        <p style="font-size: 14px; color: var(--slate-600); line-height: 1.6;">Personalized gamified experience for students to learn, take challenges, track daily carbon offsets, and consult the AI tutor.</p>
+                        
+                        <ul class="portal-features-list">
+                            <li><span class="check">✓</span> Level progression & daily streaks</li>
+                            <li><span class="check">✓</span> Interactive quiz arena with XP rewards</li>
+                            <li><span class="check">✓</span> Real-world verifiable eco missions</li>
+                            <li><span class="check">✓</span> Shareable verified Eco Passport</li>
+                        </ul>
+                    </div>
+                    <a href="dashboard.html" class="primary-btn full-btn" style="text-decoration: none;">Launch Student Portal →</a>
+                </div>
+
+                <!-- Teacher Portal -->
+                <div class="portal-premium-card teacher-card">
+                    <div>
+                        <span class="portal-card-badge badge-blue">Faculty Studio</span>
+                        <div class="portal-icon-large">👩‍🏫</div>
+                        <h3>Teacher Portal</h3>
+                        <p style="font-size: 14px; color: var(--slate-600); line-height: 1.6;">Author interactive environmental quizzes, review student mission photographic proof, and monitor classroom engagement.</p>
+                        
+                        <ul class="portal-features-list">
+                            <li><span class="check">✓</span> Custom Quiz & Question Builder</li>
+                            <li><span class="check">✓</span> Mission proof verification queue</li>
+                            <li><span class="check">✓</span> Student score & cohort analytics</li>
+                            <li><span class="check">✓</span> Curriculum assignment tools</li>
+                        </ul>
+                    </div>
+                    <a href="login.html" class="outline-btn full-btn" style="text-decoration: none;">Enter as Teacher →</a>
+                </div>
+
+                <!-- Institution Portal -->
+                <div class="portal-premium-card institution-card">
+                    <div>
+                        <span class="portal-card-badge badge-purple">Executive Suite</span>
+                        <div class="portal-icon-large">🏛️</div>
+                        <h3>Institution Portal</h3>
+                        <p style="font-size: 14px; color: var(--slate-600); line-height: 1.6;">Campus-level overview of ESG compliance, renewable energy generation, water audits, and inter-department leagues.</p>
+                        
+                        <ul class="portal-features-list">
+                            <li><span class="check">✓</span> Campus Eco Score benchmark (88/100)</li>
+                            <li><span class="check">✓</span> Solar generation & carbon audit</li>
+                            <li><span class="check">✓</span> Inter-department league standings</li>
+                            <li><span class="check">✓</span> One-click ESG compliance reports</li>
+                        </ul>
+                    </div>
+                    <a href="login.html" class="outline-btn full-btn" style="text-decoration: none;">Enter as Institution →</a>
+                </div>
+            </div>
         </div>
-        <p style="color: var(--text-muted); font-size: 13px;">
-            © 2026 SMIH. Smart Environmental Learning Hub. Learn • Play • Act • Protect.
-        </p>
-        <div style="display: flex; gap: 16px; font-size: 13px; font-weight: 600;">
-            <a href="courses.html">Courses</a>
-            <a href="quiz.html">Quizzes</a>
-            <a href="missions.html">Missions</a>
-            <a href="leaderboard.html">Leaderboard</a>
+    </section>
+
+    <!-- Curriculum Modules Section -->
+    <section id="curriculum" class="landing-section">
+        <div class="section-head-center">
+            <span class="section-pill-tag badge-green">SCIENCE-BACKED SYLLABUS</span>
+            <h2 class="section-title">Comprehensive Environmental Curriculum</h2>
+            <p class="section-desc">Modular, interactive courses designed by environmental scientists covering foundational principles to advanced ecological engineering.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+            <div class="content-card" style="border-radius: 20px;">
+                <div style="font-size: 34px; margin-bottom: 12px;">🌡️</div>
+                <h4 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">Climate Change & Carbon</h4>
+                <p style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 16px;">Greenhouse gases, radiative forcing, global tipping points, and personal carbon auditing.</p>
+                <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--emerald-600);">
+                    <span>6 Interactive Modules</span>
+                    <span>350 XP</span>
+                </div>
+            </div>
+
+            <div class="content-card" style="border-radius: 20px;">
+                <div style="font-size: 34px; margin-bottom: 12px;">♻️</div>
+                <h4 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">Circular Economy & Waste</h4>
+                <p style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 16px;">Eliminating single-use polymers, closed-loop materials, industrial composting, and zero-waste design.</p>
+                <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--emerald-600);">
+                    <span>5 Interactive Modules</span>
+                    <span>300 XP</span>
+                </div>
+            </div>
+
+            <div class="content-card" style="border-radius: 20px;">
+                <div style="font-size: 34px; margin-bottom: 12px;">⚡</div>
+                <h4 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">Renewable Energy Grids</h4>
+                <p style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 16px;">Photovoltaics, micro-inverters, wind generation, battery storage, and campus grid decentralization.</p>
+                <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--emerald-600);">
+                    <span>7 Interactive Modules</span>
+                    <span>420 XP</span>
+                </div>
+            </div>
+
+            <div class="content-card" style="border-radius: 20px;">
+                <div style="font-size: 34px; margin-bottom: 12px;">🌊</div>
+                <h4 style="font-size: 18px; font-weight: 800; margin-bottom: 8px;">Water & Ocean Conservation</h4>
+                <p style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 16px;">Rainwater harvesting systems, greywater treatment, watershed restoration, and marine ecosystems.</p>
+                <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--emerald-600);">
+                    <span>4 Interactive Modules</span>
+                    <span>280 XP</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="courses.html" class="secondary-btn" style="padding: 12px 28px; font-size: 15px; text-decoration: none; border-radius: var(--radius-full);">
+                Browse All Curriculum Modules →
+            </a>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <div id="impact" style="padding: 0 24px;">
+        <div class="landing-cta-banner">
+            <h2>Ready to Lead the Green Revolution on Campus?</h2>
+            <p>Join thousands of students and educators transforming sustainability from abstract theory into everyday habits and verified carbon savings.</p>
+            <div class="landing-cta-btns">
+                <a href="register.html" class="cta-white-btn">Create Free Student Account →</a>
+                <a href="dashboard.html" class="cta-outline-btn">Explore Live Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern Corporate Footer -->
+    <footer class="landing-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <div class="landing-brand" style="margin-bottom: 14px;">
+                    <div class="landing-brand-icon">🌱</div>
+                    <div>
+                        <span class="landing-brand-title">SMIH</span>
+                        <span class="landing-brand-tag">Smart Eco Hub</span>
+                    </div>
+                </div>
+                <p style="font-size: 13.5px; color: var(--slate-500); line-height: 1.6; max-width: 320px;">
+                    Gamified environmental education platform powering real-world sustainability habits, campus leagues, and verified carbon offsets.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="dashboard.html">Live Dashboard</a></li>
+                    <li><a href="courses.html">Course Catalog</a></li>
+                    <li><a href="quiz.html">Quiz Arena</a></li>
+                    <li><a href="missions.html">Eco Missions</a></li>
+                    <li><a href="leaderboard.html">Campus Leaderboard</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Portals</h4>
+                <ul class="footer-links">
+                    <li><a href="dashboard.html">Student Champion Portal</a></li>
+                    <li><a href="login.html">Faculty & Teacher Studio</a></li>
+                    <li><a href="login.html">Campus Sustainability Dean</a></li>
+                    <li><a href="profile.html#passport">Official Eco Passport</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Global Goals</h4>
+                <div style="display: flex; gap: 8px; flex-direction: column;">
+                    <span class="badge-tag badge-green" style="width: fit-content;">🎯 UN SDG 12: Responsible Consumption</span>
+                    <span class="badge-tag badge-blue" style="width: fit-content;">🌍 UN SDG 13: Climate Action</span>
+                    <span class="badge-tag badge-purple" style="width: fit-content;">🎓 UN SDG 4: Quality Education</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2026 SMIH • Smart Environmental Learning Hub. All rights reserved.</div>
+            <div style="display: flex; gap: 16px;">
+                <a href="index.html" style="color: var(--slate-500); text-decoration: none;">Home</a>
+                <a href="dashboard.html" style="color: var(--slate-500); text-decoration: none;">Dashboard</a>
+                <a href="login.html" style="color: var(--slate-500); text-decoration: none;">Login</a>
+                <a href="register.html" style="color: var(--slate-500); text-decoration: none;">Register</a>
+            </div>
         </div>
     </footer>
 
